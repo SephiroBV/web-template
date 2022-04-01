@@ -1,9 +1,0 @@
-# Ignore everything
-/[!.]*
-/.?*
-
-# Except what we need
-!/Cargo.toml
-!/Cargo.lock
-!/Dockerfile
-!/src/**
