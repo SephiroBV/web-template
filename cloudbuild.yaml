@@ -8,19 +8,13 @@ steps:
       - '-f'
       - Dockerfile
     id: Build
+    timeout: 2400s
   - name: gcr.io/cloud-builders/docker
     args:
       - push
       - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA'
     id: Push
-  - name: 'gcr.io/kaniko-project/executor:latest'
-    args:
-      - '--destination=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA'
-      - '--cache=true'
-      - '--cache-ttl=168h'
-      - '--use-new-run'
-    id: Build
-    timeout: 2400s
+    timeout: 1200s
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
     args:
       - run
