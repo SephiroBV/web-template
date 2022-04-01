@@ -1853,7 +1853,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "web-template"
+name = "web_template"
 version = "0.1.0"
 dependencies = [
  "actix-web",
