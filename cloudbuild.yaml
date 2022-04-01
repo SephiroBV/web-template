@@ -23,7 +23,7 @@ steps:
 timeout: 3600s
 options:
   substitutionOption: ALLOW_LOOSE
-tags:
-  - gcp-cloud-build-deploy-cloud-run
-  - gcp-cloud-build-deploy-cloud-run-managed
-  - $_SERVICE_NAME
+#tags:
+#  - gcp-cloud-build-deploy-cloud-run
+#  - gcp-cloud-build-deploy-cloud-run-managed
+#  - $_SERVICE_NAME
