@@ -3,7 +3,7 @@ ARG RUST_VERSION=1.59.0
 ARG CARGO_CHEF_VERSION="=0.1.35"
 ARG USERNAME=runner
 
-FROM muslrust:${RUST_VERSION}-stable AS builder
+FROM ${PROJECT_ID}/muslrust:${RUST_VERSION}-stable AS builder
 USER root
 WORKDIR /app
 ARG APP_NAME
@@ -16,7 +16,7 @@ RUN cargo chef cook --package $APP_NAME --release --target x86_64-unknown-linux-
 COPY /src src
 RUN cargo build --release --target x86_64-unknown-linux-musl --bin $APP_NAME
 
-FROM alpine AS runtime
+FROM ${PROJECT_ID}/alpine AS runtime
 ARG APP_NAME
 ARG USERNAME
 ENV APP_NAME $APP_NAME
