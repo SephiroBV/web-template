@@ -1,4 +1,4 @@
-use actix_web::{body::to_bytes, test, App};
+use actix_web::{App, body::to_bytes, test};
 
 use crate::utils::test_init::test_config;
 
@@ -13,6 +13,6 @@ async fn get_heartbeat() {
 
     // Assert
     assert!(resp.status().is_success());
-    let response_body = resp.into_body();
-    assert_eq!("Up", to_bytes(response_body).await.unwrap());
+    let body = resp.into_body();
+    assert_eq!("Up", to_bytes(body).await.unwrap());
 }
