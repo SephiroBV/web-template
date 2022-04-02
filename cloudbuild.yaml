@@ -1,22 +1,14 @@
 steps:
-  - name: gcr.io/cloud-builders/docker
+  - name: 'gcr.io/kaniko-project/executor:debug'
     args:
-      - build
-      - '-t'
-      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:latest'
-      - '--cache-from'
-      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:latest'
-      - .
-      - '-f'
-      - Dockerfile
+      - '--destination=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:latest'
+      - '--cache=true'
+      - '--cache-ttl=168h'
+      - '--use-new-run'
+      - '--verbosity=debug'
+      - '--registry-mirror=eu.gcr.io'
     id: Build
     timeout: 2400s
-  - name: gcr.io/cloud-builders/docker
-    args:
-      - push
-      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:latest'
-    id: Push
-    timeout: 1200s
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
     args:
       - run
