@@ -7,7 +7,7 @@ use web_template::init::{app_config, telemetry_config};
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     std::env::set_var("RUST_LOG", "info");
-    telemetry_config::init("web-template");
+    telemetry_config::init("web_template");
 
     let app_factory = || {
         App::new()
