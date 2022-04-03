@@ -13,6 +13,6 @@ async fn get_heartbeat() {
 
     // Assert
     assert!(resp.status().is_success());
-    let body = resp.into_body();
-    assert_eq!("Up", to_bytes(body).await.unwrap());
+    let response_body = resp.into_body();
+    assert_eq!("Up", to_bytes(response_body).await.unwrap());
 }
