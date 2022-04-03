@@ -29,5 +29,6 @@ options:
 tags:
   - $_SERVICE_NAME
   - $COMMIT_SHA
+  - $SHORT_SHA
   - $REPO_NAME
   - $_DEPLOY_REGION
