@@ -6,13 +6,13 @@ use crate::utils::test_init::test_config;
 async fn get_heartbeat() {
     // Arrange
     let app = test::init_service(App::new().configure(test_config)).await;
-    let req = test::TestRequest::get().uri("/heartbeat").to_request();
+    let request = test::TestRequest::get().uri("/heartbeat").to_request();
 
     // Act
-    let resp = test::call_service(&app, req).await;
+    let response = test::call_service(&app, request).await;
 
     // Assert
-    assert!(resp.status().is_success());
-    let response_body = resp.into_body();
-    assert_eq!("Up", to_bytes(response_body).await.unwrap());
+    assert!(response.status().is_success());
+    let body = response.into_body();
+    assert_eq!("Up", to_bytes(body).await.unwrap());
 }
