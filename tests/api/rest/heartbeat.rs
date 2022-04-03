@@ -1,4 +1,4 @@
-use actix_web::{App, body::to_bytes, test};
+use actix_web::{body::to_bytes, test, App};
 
 use crate::utils::test_init::test_config;
 
