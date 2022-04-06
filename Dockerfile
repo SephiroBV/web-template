@@ -3,7 +3,7 @@ ARG RUST_VERSION=1.59.0
 ARG CARGO_CHEF_VERSION="=0.1.35"
 ARG USERNAME=runner
 
-FROM muslrust:${RUST_VERSION}-stable AS builder
+FROM clux/muslrust:${RUST_VERSION}-stable AS builder
 USER root
 WORKDIR /app
 ARG APP_NAME
